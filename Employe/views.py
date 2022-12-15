@@ -13,3 +13,11 @@ class Employ(APIView):
         serialize = TeeacherSerial(teachers,many = True)
         return Response(serialize.data)
     
+    
+class CreateEmpo(APIView):
+    def post(request):
+        seria = TeeacherSerial(data= request.data)
+        if seria.is_valid():
+            seria.save()
+            return Response(seria.data)
+    
